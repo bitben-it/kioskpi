@@ -1,6 +1,5 @@
 // Image slider functionality
 let currentImageIndex = 0;
-let imageSliderInterval = null;
 let currentImages = [];
 
 function updateImageSlider(images) {
@@ -44,7 +43,7 @@ function updateImageSlider(images) {
 
     currentImageIndex = 0;
     updateSliderPosition();
-    startAutoSlide();
+    // Auto-slide disabled - only manual navigation
 }
 
 function updateSliderPosition() {
@@ -63,7 +62,6 @@ function goToImage(index) {
     if (index >= 0 && index < currentImages.length) {
         currentImageIndex = index;
         updateSliderPosition();
-        resetAutoSlide();
     }
 }
 
@@ -71,39 +69,15 @@ function nextImage() {
     if (currentImages.length === 0) return;
     currentImageIndex = (currentImageIndex + 1) % currentImages.length;
     updateSliderPosition();
-    resetAutoSlide();
 }
 
 function prevImage() {
     if (currentImages.length === 0) return;
     currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
     updateSliderPosition();
-    resetAutoSlide();
 }
 
-function startAutoSlide() {
-    // Clear any existing interval first
-    if (imageSliderInterval) {
-        clearInterval(imageSliderInterval);
-        imageSliderInterval = null;
-    }
-    // Start new interval if we have multiple images
-    if (currentImages.length > 1) {
-        imageSliderInterval = setInterval(nextImage, 5000);
-    }
-}
-
-function resetAutoSlide() {
-    // Clear existing interval
-    if (imageSliderInterval) {
-        clearInterval(imageSliderInterval);
-        imageSliderInterval = null;
-    }
-    // Restart auto-slide
-    if (currentImages.length > 1) {
-        imageSliderInterval = setInterval(nextImage, 5000);
-    }
-}
+// Auto-slide functionality removed - slider only responds to user interaction
 
 // Initialize slider navigation
 if (dom.sliderNext && dom.sliderPrev) {

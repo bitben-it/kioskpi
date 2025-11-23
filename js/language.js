@@ -1,6 +1,25 @@
 // Language switching and POI info loading
 let currentLanguage = 'en';
 
+// Update flag icon function
+function updateFlagIcon(lang) {
+    const flagImage = document.getElementById('flag-image');
+    if (flagImage && FLAG_PATHS[lang]) {
+        const flagPath = FLAG_PATHS[lang];
+        console.log('Updating flag to:', flagPath, 'for language:', lang);
+        flagImage.src = flagPath;
+        flagImage.alt = `${lang} flag`;
+        // Handle missing flag files gracefully
+        flagImage.onerror = function() {
+            console.warn(`Flag icon not found: ${flagPath}, using default`);
+            // You can set a default flag here if needed
+            // this.src = "assets/icon-flags/us.svg"; // fallback to US flag
+        };
+    } else {
+        console.warn('Flag image element not found or no flag path for language:', lang);
+    }
+}
+
 // Load POI info from JSON file
 async function loadPoiInfo(jsonPath) {
     try {
@@ -33,6 +52,9 @@ async function updateLanguage(lang) {
             console.error('No content found for language:', lang);
             return;
         }
+        
+        // Update flag icon
+        updateFlagIcon(lang);
         
         // Update UI labels
         if (dom.languageLabelElement) {
@@ -91,7 +113,10 @@ async function updateLanguage(lang) {
 // Initialize language selector
 if (dom.languageSelect) {
     dom.languageSelect.addEventListener('change', (e) => {
-        updateLanguage(e.target.value).catch(err => {
+        const selectedLang = e.target.value;
+        // Update flag immediately when language changes
+        updateFlagIcon(selectedLang);
+        updateLanguage(selectedLang).catch(err => {
             console.error('Error updating language:', err);
         });
     });

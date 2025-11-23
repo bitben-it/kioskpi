@@ -15,15 +15,20 @@
 
             <div class="language-selector">
                 <label for="language-select" id="language-label">Language:</label>
-                <select id="language-select">
-                    <option value="en">🇬🇧 English</option>
-                    <option value="de">🇩🇪 Deutsch</option>
-                    <option value="sl">🇸🇮 Slovenščina</option>
-                    <option value="it">🇮🇹 Italiano</option>
-                    <option value="es">🇪🇸 Español</option>
-                    <option value="fr">🇫🇷 Français</option>
-                    <option value="zh">🇨🇳 中文</option>
-                </select>
+                <div class="custom-select-wrapper">
+                    <div class="flag-icon" id="current-flag">
+                        <img src="assets/icon-flags/us.svg" alt="Flag" id="flag-image">
+                    </div>
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="sl">Slovenščina</option>
+                        <option value="it">Italiano</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
             </div>
         </div>
 

@@ -20,7 +20,8 @@ const dom = {
     tabVideos: document.getElementById('tab-videos'),
     tabAudios: document.getElementById('tab-audios'),
     contentVideos: document.getElementById('content-videos'),
-    contentAudios: document.getElementById('content-audios')
+    contentAudios: document.getElementById('content-audios'),
+    flagImage: document.getElementById('flag-image')
 };
 
 // Verify critical elements exist

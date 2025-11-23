@@ -77,17 +77,51 @@ body {
     color: #d0d0d0;
 }
 
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.custom-select-wrapper .flag-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-select-wrapper .flag-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
 select {
     background: #2d2d44;
     color: #e0e0e0;
     border: 2px solid #3d3d5c;
     border-radius: 8px;
     padding: 8px 12px;
-    padding-left: 35px;
+    padding-right: 30px;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 180px;
+    min-width: 150px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e0e0e0' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
 }
 
 select option {
@@ -96,12 +130,13 @@ select option {
 
 select:hover {
     border-color: #5d5d7c;
-    background: #35354a;
+    background-color: #35354a;
 }
 
 select:focus {
     outline: none;
     border-color: #6c5ce7;
+    background-color: #35354a;
     box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
 }
 

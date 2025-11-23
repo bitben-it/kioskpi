@@ -211,3 +211,8 @@ This project uses standard HTML5 audio and video elements, compatible with:
 ## License
 
 This is a minimal project template. Use as needed.
+
+
+# Flags can be downloaded here:
+
+https://flagicons.lipis.dev/

@@ -1,6 +1,17 @@
 // Configuration constants and content data
 const LOGO_PATH = "dh-logo-2-white.svg";
 
+// Flag icon paths for each language
+const FLAG_PATHS = {
+    en: "assets/icon-flags/us.svg",
+    de: "assets/icon-flags/de.svg",
+    sl: "assets/icon-flags/si.svg",
+    it: "assets/icon-flags/it.svg", // Note: if this file doesn't exist, will use fallback
+    es: "assets/icon-flags/es.svg",
+    fr: "assets/icon-flags/fr.svg",
+    zh: "assets/icon-flags/cn.svg"
+};
+
 const CONTENT = {
     en: {
         infoJson: "assets/en/info.json",
