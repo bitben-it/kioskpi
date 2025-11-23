@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point of Interest</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <div class="logo" id="logo">
+                <img src="dh-logo-2-white.svg" alt="Logo">
+            </div>
+
+            <div class="language-selector">
+                <label for="language-select" id="language-label">Language:</label>
+                <select id="language-select">
+                    <option value="en">🇬🇧 English</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="sl">🇸🇮 Slovenščina</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="zh">🇨🇳 中文</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="title-section">
+                <div class="title-with-audio">
+                    <h1 id="title">Point of Interest</h1>
+                    <div class="default-audio-player">
+                        <button class="audio-play-btn" id="audio-play-btn" aria-label="Play audio">
+                            <span class="play-icon">▶</span>
+                            <span class="pause-icon" style="display: none;">⏸</span>
+                        </button>
+                        <span class="audio-duration" id="audio-duration">--:--</span>
+                    </div>
+                </div>
+                <audio id="default-audio" preload="metadata" controlsList="nodownload"></audio>
+                <p class="subtitle" id="subtitle">Discover this amazing location</p>
+                <div class="description-container" id="description-container">
+                    <div class="description" id="description-short"></div>
+                    <div class="description description-full" id="description-full"></div>
+                    <button class="show-more-btn" id="show-more-btn" style="display: none;">Show more</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="image-slider" id="image-slider">
+            <div class="slider-container">
+                <div class="slider-wrapper" id="slider-wrapper"></div>
+                <button class="slider-nav prev" id="slider-prev">‹</button>
+                <button class="slider-nav next" id="slider-next">›</button>
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="videos" id="tab-videos">Videos</button>
+            <button class="tab" data-tab="audios" id="tab-audios">Audios</button>
+        </div>
+
+        <div class="tab-content active" id="content-videos">
+            <div class="media-grid" id="videos-grid"></div>
+        </div>
+
+        <div class="tab-content" id="content-audios">
+            <div class="media-grid" id="audios-grid"></div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/logo.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/media.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/description.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
