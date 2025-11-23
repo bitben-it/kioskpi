@@ -43,7 +43,7 @@ function toggleDefaultAudio() {
             console.error('No audio source set. Audio element:', audioEl);
             console.error('Audio element HTML:', audioEl.outerHTML);
             // Try to reload from current language
-            const content = CONTENT[currentLanguage];
+            const content = CONTENT[window.currentLanguage || 'en'];
             if (content && content.defaultAudio) {
                 console.log('Attempting to reload audio:', content.defaultAudio);
                 updateDefaultAudio(content.defaultAudio);

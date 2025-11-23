@@ -1,6 +1,9 @@
 // Configuration constants and content data
 const LOGO_PATH = "dh-logo-2-white.svg";
 
+// Global current language variable (accessible from all modules)
+let currentLanguage = 'de';
+
 // Flag icon paths for each language
 const FLAG_PATHS = {
     en: "assets/icon-flags/us.svg",

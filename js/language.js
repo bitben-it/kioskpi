@@ -1,5 +1,5 @@
 // Language switching and POI info loading
-let currentLanguage = 'en';
+// Note: currentLanguage is now defined in config.js for global access
 
 // Update flag icon function
 function updateFlagIcon(lang) {
@@ -45,7 +45,10 @@ async function loadPoiInfo(jsonPath) {
 // Language update function
 async function updateLanguage(lang) {
     try {
+        // Update global currentLanguage
         currentLanguage = lang;
+        window.currentLanguage = lang; // Also set on window for compatibility
+        
         const content = CONTENT[lang];
         
         if (!content) {
@@ -86,27 +89,50 @@ async function updateLanguage(lang) {
             );
         }
 
-        // Update image slider
+        // Update image slider (with error handling)
         if (dom.sliderWrapper && dom.sliderDots) {
-            updateImageSlider(content.images);
+            if (content.images && Array.isArray(content.images) && content.images.length > 0) {
+                updateImageSlider(content.images);
+            } else {
+                console.warn('No images configured for language:', lang);
+                updateImageSlider([]);
+            }
         }
 
-        // Update default audio
+        // Update default audio (with error handling)
         if (content.defaultAudio) {
-            updateDefaultAudio(content.defaultAudio);
+            try {
+                updateDefaultAudio(content.defaultAudio);
+            } catch (audioError) {
+                console.error('Error updating default audio:', audioError);
+            }
         } else {
             console.warn('Default audio not set for language:', lang);
         }
 
-        // Update media grids
+        // Update media grids (with error handling)
         if (dom.videosGrid) {
-            updateVideosGrid(content.videos);
+            if (content.videos && Array.isArray(content.videos) && content.videos.length > 0) {
+                updateVideosGrid(content.videos);
+            } else {
+                console.warn('No videos configured for language:', lang);
+                updateVideosGrid([]);
+            }
         }
         if (dom.audiosGrid) {
-            updateAudiosGrid(content.audios);
+            if (content.audios && Array.isArray(content.audios) && content.audios.length > 0) {
+                updateAudiosGrid(content.audios);
+            } else {
+                console.warn('No audios configured for language:', lang);
+                updateAudiosGrid([]);
+            }
         }
     } catch (error) {
         console.error('Error in updateLanguage:', error);
+        // Show user-friendly error message
+        if (dom.titleElement) {
+            dom.titleElement.textContent = 'Error loading content';
+        }
     }
 }
 
